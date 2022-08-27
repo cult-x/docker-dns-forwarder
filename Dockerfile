@@ -8,7 +8,7 @@ RUN apk add --no-cache bind && \
 # copy default config
 COPY named.conf /etc/bind/
 
-# COPY 
+COPY init-forwarder.sh /init-forwarder.sh
 
 # Environment Variables
 ENV DNS_LISTEN_ON=any;
@@ -19,4 +19,5 @@ ENV DNS_PORT=53
 EXPOSE $DNS_PORT
 
 # start bind
-ENTRYPOINT ["/usr/sbin/named", "-f", "-g"]
+# ENTRYPOINT ["/usr/sbin/named", "-f", "-g"]
+ENTRYPOINT /init-forwarder.sh
