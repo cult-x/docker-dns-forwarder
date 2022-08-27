@@ -15,10 +15,11 @@ RUN chmod +x /init-forwarder.sh
 # Environment Variables
 ENV DNS_LISTEN_ON_ADDRESS=any
 ENV DNS_FORWARDERS=1.0.0.1;1.1.1.1;
-ENV DNS_LISTEN_ON_PORT=53
+# ENV DNS_LISTEN_ON_PORT=53
 
 # expose dns port 53 on tcp and udp
-EXPOSE $DNS_LISTEN_ON_PORT
+#EXPOSE $DNS_LISTEN_ON_PORT
+EXPOSE 53
 
 # start bind
 # ENTRYPOINT ["/usr/sbin/named", "-f", "-g"]
