@@ -8,7 +8,7 @@ RUN apk add --no-cache bind && \
 # copy default config
 COPY named.conf /etc/bind/
 
-COPY 
+# COPY 
 
 # Environment Variables
 ENV DNS_LISTEN_ON=any;
