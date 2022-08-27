@@ -10,6 +10,8 @@ COPY named.conf /etc/bind/
 
 COPY init-forwarder.sh /init-forwarder.sh
 
+RUN chmod +x /init-forwarder.sh
+
 # Environment Variables
 ENV DNS_LISTEN_ON=any;
 ENV DNS_FORWARDERS=1.0.0.1;1.1.1.1;
