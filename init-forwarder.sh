@@ -11,7 +11,7 @@ options {
         forward only;
         dnssec-validation no; # needed for private dns zones
         auth-nxdomain no; # conform to RFC1035
-        listen-on { $DNS_LISTEN_ON_ADDRESS port $DNS_LISTEN_ON_PORT; };
+        listen-on { any; };
 };
 BindConfigFile
 
