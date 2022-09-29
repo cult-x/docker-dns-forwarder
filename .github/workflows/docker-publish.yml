@@ -2,10 +2,10 @@ name: Docker
 
 # action execution section
 on:
-  #schedule:
-  #  - cron: '24 11 * * *'
-  push:
-    branches: [ "main" ]
+  schedule:
+    - cron: '24 7 1 * *'
+  # push:
+    # branches: [ "main" ]
     # Publish semver tags as releases.
     # tags: [ 'v*.*.*' ]
   #pull_request:
