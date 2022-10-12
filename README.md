@@ -1,3 +1,5 @@
+Build status: [![Docker](https://github.com/w-kramer/docker-dns-forwarder/actions/workflows/docker-publish.yml/badge.svg)](https://github.com/w-kramer/docker-dns-forwarder/actions/workflows/docker-publish.yml)
+
 # docker-dns-forwarder
 DNS forwarder in a Docker container based on alpine:latest, using bind. Container is scheduled to be created every month.
 
