@@ -23,8 +23,9 @@ jobs:
     steps:
       - 
         name: Get current date
-        id: date
-        run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
+#         id: date
+#         run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
+        run: echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_ENV
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v2
@@ -43,15 +44,16 @@ jobs:
         with:
           push: true
           platforms: linux/amd64,linux/arm64
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.DOCKERHUB_REPOSITORY }}:latest,${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.DOCKERHUB_REPOSITORY }}:${{ steps.date.outputs.date }}
+          #tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.DOCKERHUB_REPOSITORY }}:latest,${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.DOCKERHUB_REPOSITORY }}:${{ steps.date.outputs.date }}
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.DOCKERHUB_REPOSITORY }}:latest,${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.DOCKERHUB_REPOSITORY }}:${{ env.date }}
 
-  scan:
-    runs-on: ubuntu-latest
+#   scan:
+#     runs-on: ubuntu-latest
 
-    steps:
-      - uses: actions/checkout@v3
-      - name: Scan with Mondoo
-        uses: mondoohq/actions/docker-image@main
-        with:
-          service-account-credentials: ${{ secrets.MONDOO_SERVICE_ACCOUNT }}
-          image: ubuntu:22.04
+#     steps:
+#       - uses: actions/checkout@v3
+#       - name: Scan with Mondoo
+#         uses: mondoohq/actions/docker-image@main
+#         with:
+#           service-account-credentials: ${{ secrets.MONDOO_SERVICE_ACCOUNT }}
+#           image: ubuntu:22.04
